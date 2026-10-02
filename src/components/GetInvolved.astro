@@ -1,0 +1,73 @@
+---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import SectionHeading from './SectionHeading.astro';
+import { involve, site } from '@/data/site';
+import forest from '@/assets/hero-forest.jpg';
+---
+
+<section
+  id="get-involved"
+  class="relative isolate overflow-hidden bg-forest-900 py-24 text-sage-50 sm:py-32"
+  aria-labelledby="involve-title"
+>
+  <Image
+    src={forest}
+    alt=""
+    widths={[640, 1280, 1920]}
+    sizes="100vw"
+    quality={70}
+    class="absolute inset-0 -z-20 size-full object-cover object-bottom"
+  />
+  <div class="absolute inset-0 -z-10 bg-forest-900/85" aria-hidden="true"></div>
+
+  <div class="container-page">
+    <SectionHeading
+      id="involve-title"
+      eyebrow="Get involved"
+      title={involve.title}
+      lead={involve.lead}
+      tone="dark"
+    />
+
+    <ul class="grid gap-6 md:grid-cols-3">
+      {involve.ways.map((w) => {
+        const external = w.href.startsWith('http');
+        return (
+          <li
+            class="flex flex-col rounded-3xl border border-white/10 bg-forest-950/40 p-8 backdrop-blur-sm"
+            data-reveal
+          >
+            <span class="mb-6 grid size-12 place-items-center rounded-2xl bg-sage-300 text-forest-800">
+              <Icon name={w.icon} size={24} />
+            </span>
+            <h3 class="mb-3 text-2xl font-medium text-white">{w.title}</h3>
+            <p class="mb-8 leading-relaxed text-pretty text-sage-100/80">{w.text}</p>
+            <a
+              href={w.href}
+              {...(external && { target: '_blank', rel: 'noopener noreferrer' })}
+              class="mt-auto inline-flex items-center gap-2 font-semibold text-sage-200 transition-colors hover:text-white"
+            >
+              {w.cta}
+              <Icon name="arrow-right" size={18} />
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+
+    <div
+      class="mt-14 flex flex-col items-start justify-between gap-6 rounded-3xl bg-sage-300 p-8 text-forest-900 sm:p-10 md:flex-row md:items-center"
+      data-reveal
+    >
+      <div>
+        <p class="font-display text-2xl text-forest-800 sm:text-3xl">Questions? Write to us.</p>
+        <p class="mt-1 text-forest-900/75">We read every message and reply as soon as we can.</p>
+      </div>
+      <a href={`mailto:${site.email}`} class="btn-primary max-w-full">
+        <Icon name="mail" size={18} class="shrink-0" />
+        <span class="truncate">{site.email}</span>
+      </a>
+    </div>
+  </div>
+</section>

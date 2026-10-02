@@ -1,0 +1,28 @@
+---
+import Icon from './Icon.astro';
+import SectionHeading from './SectionHeading.astro';
+import { values } from '@/data/site';
+---
+
+<section id="values" class="bg-sage-300 py-24 sm:py-32" aria-labelledby="values-title">
+  <div class="container-page">
+    <SectionHeading
+      id="values-title"
+      eyebrow="Our core values"
+      title="What guides how we move"
+      lead="Six values shape every training, campaign and conversation we lead."
+    />
+
+    <ul class="grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+      {values.map((v) => (
+        <li class="border-t border-forest-700/25 pt-6" data-reveal>
+          <span class="mb-5 grid size-11 place-items-center rounded-full bg-forest-700 text-sage-200">
+            <Icon name={v.icon} size={20} />
+          </span>
+          <h3 class="mb-2 text-2xl font-medium text-forest-800">{v.title}</h3>
+          <p class="leading-relaxed text-pretty text-forest-900/80">{v.text}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

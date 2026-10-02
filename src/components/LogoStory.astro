@@ -1,0 +1,56 @@
+---
+import { Image } from 'astro:assets';
+import SectionHeading from './SectionHeading.astro';
+import { symbol } from '@/data/site';
+import logoMark from '@/assets/logo-mark.png';
+---
+
+<section
+  id="our-symbol"
+  class="overflow-hidden bg-forest-900 py-24 text-sage-50 sm:py-32"
+  aria-labelledby="symbol-title"
+>
+  <div class="container-page grid items-center gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
+    <div class="relative mx-auto w-full max-w-sm" data-reveal>
+      <div
+        class="absolute -inset-8 rounded-full border border-sage-300/15 sm:-inset-12"
+        aria-hidden="true"
+      ></div>
+      <div class="relative grid aspect-square place-items-center rounded-full bg-sage-300 shadow-2xl shadow-black/30">
+        <Image
+          src={logoMark}
+          alt="CEFA logo: a tree whose trunk rises into a hand, a wing and a wave curling around the Earth"
+          width={360}
+          class="h-[68%] w-auto"
+        />
+      </div>
+    </div>
+
+    <div>
+      <SectionHeading
+        id="symbol-title"
+        eyebrow="Our symbol"
+        title={symbol.title}
+        lead={symbol.lead}
+        tone="dark"
+      />
+      <dl class="grid gap-x-8 gap-y-8 sm:grid-cols-2">
+        {symbol.meanings.map((m) => (
+          <div class="border-l-2 border-clay-400 pl-5" data-reveal>
+            <dt class="font-display text-xl text-white">{m.title}</dt>
+            <dd class="mt-1 leading-relaxed text-sage-100/80">{m.text}</dd>
+          </div>
+        ))}
+      </dl>
+      <p class="mt-10 text-sm text-sage-100/60" data-reveal>
+        Designed by{' '}
+        <a
+          href={symbol.credit.url}
+          class="text-sage-200 underline underline-offset-4 hover:text-white"
+        >
+          {symbol.credit.name}
+        </a>
+      </p>
+    </div>
+  </div>
+</section>

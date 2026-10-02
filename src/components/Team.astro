@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets';
+import SectionHeading from './SectionHeading.astro';
+import { team } from '@/data/site';
+
+const initials = (name: string) =>
+  name
+    .replace(/^Dr\.\s*/, '')
+    .split(' ')
+    .map((part) => part[0])
+    .join('')
+    .slice(0, 2);
+---
+
+<section id="team" class="bg-paper py-24 sm:py-32" aria-labelledby="team-title">
+  <div class="container-page">
+    <SectionHeading
+      id="team-title"
+      eyebrow="Our team"
+      title="The people behind CEFA"
+      lead="Students, graduates and educators from the University of British Columbia, working with a growing network of volunteers and ambassadors."
+    />
+
+    <ul class="grid gap-10 md:grid-cols-3 md:gap-8">
+      {team.map((m) => (
+        <li class="flex flex-col" data-reveal>
+          <div class="relative mb-6 aspect-[4/5] overflow-hidden rounded-3xl bg-forest-700">
+            {m.photo ? (
+              <Image
+                src={m.photo}
+                alt={`Portrait of ${m.name}`}
+                widths={[360, 540, 720]}
+                sizes="(min-width: 768px) 33vw, 100vw"
+                class="size-full object-cover object-top"
+              />
+            ) : (
+              <div
+                class="grid size-full place-items-center bg-[radial-gradient(circle_at_30%_20%,var(--color-forest-500),var(--color-forest-800))]"
+                aria-hidden="true"
+              >
+                <span class="font-display text-7xl text-sage-300/90">{initials(m.name)}</span>
+              </div>
+            )}
+          </div>
+          <p class="eyebrow mb-2 text-clay-600">{m.role}</p>
+          <h3 class="mb-3 text-2xl font-medium text-forest-800">{m.name}</h3>
+          <p class="leading-relaxed text-pretty text-ink-muted">{m.bio}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

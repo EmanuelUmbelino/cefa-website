@@ -1,0 +1,37 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  id: string;
+  lead?: string;
+  /** Use `dark` on dark section backgrounds. */
+  tone?: 'light' | 'dark';
+  align?: 'left' | 'center';
+}
+
+const { eyebrow, title, id, lead, tone = 'light', align = 'left' } = Astro.props;
+const dark = tone === 'dark';
+---
+
+<div class:list={['mb-12 max-w-2xl', align === 'center' && 'mx-auto text-center']} data-reveal>
+  <p class:list={['eyebrow mb-4', dark ? 'text-sage-300' : 'text-clay-600']}>{eyebrow}</p>
+  <h2
+    id={id}
+    class:list={[
+      'text-4xl leading-tight font-medium tracking-tight text-balance sm:text-5xl',
+      dark ? 'text-white' : 'text-forest-800',
+    ]}
+  >
+    {title}
+  </h2>
+  {lead && (
+    <p
+      class:list={[
+        'mt-5 text-lg leading-relaxed text-pretty',
+        dark ? 'text-sage-100/85' : 'text-ink-muted',
+      ]}
+    >
+      {lead}
+    </p>
+  )}
+</div>

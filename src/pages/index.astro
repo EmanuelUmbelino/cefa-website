@@ -1,0 +1,32 @@
+---
+import Base from '@/layouts/Base.astro';
+import Header from '@/components/Header.astro';
+import Hero from '@/components/Hero.astro';
+import About from '@/components/About.astro';
+import Mission from '@/components/Mission.astro';
+import Programs from '@/components/Programs.astro';
+import Values from '@/components/Values.astro';
+import LogoStory from '@/components/LogoStory.astro';
+import Team from '@/components/Team.astro';
+import GetInvolved from '@/components/GetInvolved.astro';
+import Footer from '@/components/Footer.astro';
+---
+
+<Base>
+  <Header />
+  <main id="main">
+    <Hero />
+    <About />
+    <Mission />
+    <Programs />
+    <Values />
+    <LogoStory />
+    <Team />
+    <GetInvolved />
+  </main>
+  <Footer />
+</Base>
+
+<script>
+  import '@/scripts/main';
+</script>

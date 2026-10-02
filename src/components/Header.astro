@@ -1,0 +1,92 @@
+---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import { nav, site } from '@/data/site';
+import logoMark from '@/assets/logo-mark.png';
+---
+
+<a
+  href="#main"
+  class="sr-only z-[60] rounded-full bg-clay-600 px-4 py-2 text-white focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+>
+  Skip to content
+</a>
+
+<header
+  data-header
+  class="fixed inset-x-0 top-0 z-50 text-sage-100 transition-colors duration-300 data-[scrolled=true]:bg-forest-900/90 data-[scrolled=true]:shadow-lg data-[scrolled=true]:shadow-black/10 data-[scrolled=true]:backdrop-blur-md data-[open=true]:bg-forest-900/95"
+>
+  <nav class="container-page flex h-18 items-center justify-between gap-4" aria-label="Main">
+    <a href="#top" class="group flex items-center gap-3">
+      <span class="grid size-11 place-items-center rounded-full bg-sage-300 transition-transform duration-300 group-hover:-rotate-6">
+        <Image src={logoMark} alt="" width={40} class="h-7 w-auto" loading="eager" />
+      </span>
+      <span class="leading-tight">
+        <span class="block font-display text-xl font-semibold tracking-tight">
+          {site.shortName}
+        </span>
+        <span class="hidden text-[0.7rem] tracking-wide text-sage-200/80 sm:block">
+          {site.name}
+        </span>
+      </span>
+    </a>
+
+    <ul class="hidden items-center gap-1 lg:flex">
+      {nav.map((l) => (
+        <li>
+          <a
+            href={`#${l.id}`}
+            data-nav-link={l.id}
+            class="rounded-full px-3 py-2 text-sm text-sage-100/80 transition-colors hover:text-white aria-[current=true]:text-white aria-[current=true]:underline aria-[current=true]:decoration-clay-400 aria-[current=true]:decoration-2 aria-[current=true]:underline-offset-8"
+          >
+            {l.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="flex items-center gap-2">
+      <a href="#get-involved" class="btn-primary hidden px-5 py-2.5 sm:inline-flex">
+        Join us
+      </a>
+      <button
+        type="button"
+        data-menu-toggle
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Open menu"
+        data-label-open="Open menu"
+        data-label-close="Close menu"
+        class="group grid size-10 place-items-center rounded-full transition-colors hover:bg-white/10 lg:hidden"
+      >
+        <Icon name="menu" size={22} class="group-aria-expanded:hidden" />
+        <Icon name="x" size={22} class="hidden group-aria-expanded:block" />
+      </button>
+    </div>
+  </nav>
+
+  <div
+    id="mobile-menu"
+    data-menu
+    hidden
+    class="border-t border-white/10 bg-forest-900/95 backdrop-blur-md lg:hidden"
+  >
+    <ul class="container-page flex flex-col py-3">
+      {nav.map((l) => (
+        <li>
+          <a
+            href={`#${l.id}`}
+            class="block rounded-xl px-3 py-3 text-base text-sage-100/85 transition-colors hover:bg-white/5 hover:text-white"
+          >
+            {l.label}
+          </a>
+        </li>
+      ))}
+      <li class="px-3 pt-2 pb-1 sm:hidden">
+        <a href="#get-involved" class="btn-primary w-full">
+          Join us
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
