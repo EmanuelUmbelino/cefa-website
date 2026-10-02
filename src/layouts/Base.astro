@@ -1,6 +1,7 @@
 ---
 import '@/styles/global.css';
 import { site } from '@/data/site';
+import { withBase } from '@/utils/url';
 
 interface Props {
   title?: string;
@@ -11,7 +12,7 @@ interface Props {
 const { title = site.title, description = site.description, noindex = false } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const ogImage = new URL('/og-image.jpg', Astro.site);
+const ogImage = new URL(withBase('og-image.jpg'), Astro.site);
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -19,8 +20,8 @@ const jsonLd = {
   name: site.name,
   alternateName: site.shortName,
   description: site.description,
-  url: new URL('/', Astro.site).href,
-  logo: new URL('/apple-touch-icon.png', Astro.site).href,
+  url: new URL(withBase(), Astro.site).href,
+  logo: new URL(withBase('apple-touch-icon.png'), Astro.site).href,
   email: site.email,
   foundingDate: String(site.foundedYear),
   sameAs: [site.instagram.url],
@@ -37,10 +38,10 @@ const jsonLd = {
     <meta name="generator" content={Astro.generator} />
     {noindex && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonical} />
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="sitemap" href={withBase('sitemap-index.xml')} />
 
-    <link rel="icon" href="/favicon.png" type="image/png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" href={withBase('favicon.png')} type="image/png" />
+    <link rel="apple-touch-icon" href={withBase('apple-touch-icon.png')} />
     <meta name="theme-color" content="#082f26" />
 
     <meta property="og:type" content="website" />

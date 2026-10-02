@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import Base from '@/layouts/Base.astro';
 import logoCream from '@/assets/logo-mark-cream.png';
+import { withBase } from '@/utils/url';
 ---
 
 <Base title="Page not found · CEFA" noindex>
@@ -14,7 +15,7 @@ import logoCream from '@/assets/logo-mark-cream.png';
       <p class="eyebrow mb-3 text-sage-300">Error 404</p>
       <h1 class="text-4xl font-medium text-white sm:text-5xl">Lost in the mist</h1>
       <p class="mt-4 text-sage-100/80">The page you are looking for doesn’t exist or has moved.</p>
-      <a href="/" class="btn-primary mt-8">
+      <a href={withBase()} class="btn-primary mt-8">
         Back to the homepage
       </a>
     </div>

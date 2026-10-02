@@ -51,7 +51,7 @@ Hero (misty pine forest) · Who we are · Mission & vision · What we do · Core
 2. Push to `main`. The workflow in `.github/workflows/deploy.yml` checks, builds and publishes the site.
 3. Update `site` in [`astro.config.mjs`](astro.config.mjs) to the final domain (used for canonical links, social previews and the sitemap). For a custom domain, add it in **Settings → Pages** and put a `CNAME` file containing the domain in `public/`.
 
-The site is built to be served from the root of a domain (e.g. `climateeducationforall.org` or `<org>.github.io`), not from a sub-path.
+The workflow builds the site for the URL GitHub Pages serves it from, so it works both on a custom domain and under `https://<user>.github.io/<repo>/`. To build for a sub-path locally: `BASE_PATH=/cefa-website npm run build`.
 
 ## Credits
 
