@@ -1,0 +1,232 @@
+---
+import { Image } from 'astro:assets';
+import Base from '@/layouts/Base.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import Icon from '@/components/Icon.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import { ubc } from '@/data/campaigns';
+import { site } from '@/data/site';
+import { withBase } from '@/utils/url';
+---
+
+<Base title={`${ubc.name} · CEFA campaigns`} description={ubc.summary}>
+  <Header />
+  <main id="main">
+    <section
+      class="relative isolate flex min-h-[75svh] flex-col justify-end overflow-hidden bg-forest-950 text-sage-50"
+      aria-labelledby="ubc-title"
+    >
+      <Image
+        src={ubc.cover.src}
+        alt={ubc.cover.alt}
+        widths={[640, 960, 1280, 1600, 2400]}
+        sizes="100vw"
+        quality={80}
+        loading="eager"
+        fetchpriority="high"
+        class="absolute inset-0 -z-20 size-full object-cover object-[center_65%]"
+      />
+      <div
+        class="absolute inset-0 -z-10 bg-gradient-to-b from-forest-950/70 via-forest-950/45 to-forest-950/95"
+        aria-hidden="true"
+      ></div>
+
+      <div class="container-page pt-36 pb-16 sm:pb-20">
+        <a
+          href={withBase('/campaigns/')}
+          class="mb-8 inline-flex items-center gap-2 text-sm text-sage-200 transition-colors hover:text-white"
+        >
+          <Icon name="arrow-left" size={16} />
+          All campaigns
+        </a>
+        <p class="eyebrow mb-4 flex items-center gap-2 text-sage-300" data-reveal>
+          <Icon name="map-pin" size={16} />
+          Campaign · {ubc.location}
+        </p>
+        <h1
+          id="ubc-title"
+          class="max-w-4xl text-5xl leading-[1.05] font-medium tracking-tight text-balance text-white sm:text-6xl lg:text-7xl"
+          data-reveal
+        >
+          {ubc.name}
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-pretty text-sage-100/90" data-reveal>
+          {ubc.summary}
+        </p>
+      </div>
+    </section>
+
+    <section class="bg-paper py-24 sm:py-32" aria-labelledby="ubc-about-title">
+      <div class="container-page">
+        <div class="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+          <div data-reveal>
+            <p class="eyebrow mb-4 text-clay-600">The campaign</p>
+            <h2
+              id="ubc-about-title"
+              class="text-4xl leading-tight font-medium tracking-tight text-balance text-forest-800 sm:text-5xl"
+            >
+              Climate education in every UBC degree
+            </h2>
+          </div>
+          <div class="space-y-5 text-lg leading-relaxed text-pretty text-ink-muted" data-reveal>
+            {ubc.intro.map((p) => (
+              <p>{p}</p>
+            ))}
+          </div>
+        </div>
+
+        <dl class="mt-16 grid gap-px overflow-hidden rounded-3xl bg-sage-300 sm:mt-20 sm:grid-cols-3">
+          {ubc.stats.map((s) => (
+            <div class="flex flex-col-reverse gap-2 bg-paper p-8 sm:p-10" data-reveal>
+              <dt class="text-sm leading-snug text-ink-muted">{s.label}</dt>
+              <dd class="font-display text-5xl font-medium tracking-tight text-forest-700 sm:text-6xl">
+                {s.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <section class="bg-forest-900 py-24 text-sage-50 sm:py-32" aria-labelledby="timeline-title">
+      <div class="container-page grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+        <div class="lg:sticky lg:top-28 lg:self-start">
+          <SectionHeading
+            id="timeline-title"
+            eyebrow="Timeline"
+            title="Two years of campaigning"
+            lead="From a first meeting in the fall of 2024 to a campus-wide volunteer team."
+            tone="dark"
+          />
+          <ul class="space-y-3 text-sm text-sage-100/80" data-reveal>
+            <li class="flex items-center gap-3">
+              <span class="grid size-7 place-items-center rounded-full bg-clay-600 text-white">
+                <Icon name="star" size={14} />
+              </span>
+              Milestone for the CEFA network
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="rounded-full bg-sage-300 px-2.5 py-0.5 text-xs font-semibold text-forest-900">
+                Win
+              </span>
+              Commitment secured
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <ol class="relative border-l border-sage-300/25">
+            {ubc.timeline.map((t) => (
+              <li class="relative pb-8 pl-8 last:pb-0" data-reveal>
+                {t.milestone ? (
+                  <span
+                    class="absolute top-0 -left-3.5 grid size-7 place-items-center rounded-full bg-clay-600 text-white"
+                    aria-hidden="true"
+                  >
+                    <Icon name="star" size={14} />
+                  </span>
+                ) : (
+                  <span
+                    class="absolute top-1.5 -left-[5px] size-2.5 rounded-full bg-sage-300"
+                    aria-hidden="true"
+                  />
+                )}
+                <p class="eyebrow mb-1.5 text-sage-300">{t.date}</p>
+                <p
+                  class:list={[
+                    'leading-relaxed text-pretty',
+                    t.milestone ? 'font-display text-xl text-white' : 'text-sage-100/90',
+                  ]}
+                >
+                  {t.milestone && <span class="sr-only">Milestone: </span>}
+                  {t.url ? (
+                    <a
+                      href={t.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="underline decoration-sage-300/50 underline-offset-4 hover:text-white hover:decoration-white"
+                    >
+                      {t.text}
+                    </a>
+                  ) : (
+                    t.text
+                  )}
+                  {t.win && (
+                    <span class="ml-2 inline-block rounded-full bg-sage-300 px-2.5 py-0.5 align-middle text-xs font-semibold text-forest-900">
+                      Win
+                    </span>
+                  )}
+                </p>
+              </li>
+            ))}
+          </ol>
+
+          <p
+            class="mt-12 rounded-2xl border border-white/10 bg-forest-950/40 p-6 leading-relaxed text-pretty text-sage-100/85"
+            data-reveal
+          >
+            {ubc.throughout}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-paper py-24 sm:py-32" aria-labelledby="gallery-title">
+      <div class="container-page">
+        <SectionHeading id="gallery-title" eyebrow="Gallery" title="Moments from the campaign" />
+        <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {ubc.gallery.map((photo) => (
+            <li data-reveal>
+              <figure>
+                <div class="aspect-[4/3] overflow-hidden rounded-2xl bg-sage-200">
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    widths={[400, 600, 800]}
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    class="size-full object-cover"
+                  />
+                </div>
+                <figcaption class="mt-3 text-sm leading-snug text-ink-muted">
+                  {photo.caption}
+                </figcaption>
+              </figure>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="bg-sage-300 py-20 sm:py-24" aria-labelledby="ubc-join-title">
+      <div
+        class="container-page flex flex-col items-start justify-between gap-8 md:flex-row md:items-center"
+        data-reveal
+      >
+        <div class="max-w-2xl">
+          <h2 id="ubc-join-title" class="text-3xl font-medium text-forest-800 sm:text-4xl">
+            Join the campaign at UBC
+          </h2>
+          <p class="mt-3 text-lg leading-relaxed text-pretty text-forest-900/75">
+            Volunteers from every Faculty are welcome. No experience needed — we will train you.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a href={site.forms.join} target="_blank" rel="noopener noreferrer" class="btn-primary">
+            Apply to join
+            <Icon name="arrow-up-right" size={18} />
+          </a>
+          <a href={site.instagram.url} target="_blank" rel="noopener noreferrer" class="btn-forest">
+            <Icon name="instagram" size={18} />
+            Follow us
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<script>
+  import '@/scripts/main';
+</script>

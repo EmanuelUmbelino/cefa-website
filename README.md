@@ -26,7 +26,9 @@ npm run ci           # format:check + lint + type-check + build
 
 ## Editing content
 
-All text lives in [`src/data/site.ts`](src/data/site.ts): mission, vision, programs, values, team bios, contact links. Components in `src/components/` only handle layout.
+All text lives in [`src/data/site.ts`](src/data/site.ts): mission, vision, programs, values, team bios and links, media coverage, the land acknowledgement, contact links and form URLs. Campaign pages read from [`src/data/campaigns.ts`](src/data/campaigns.ts) (timeline, stats, photo gallery). Components in `src/components/` only handle layout.
+
+To add a news article, add an entry at the top of `media` in `site.ts`. To add a photo to a campaign gallery, put it in `src/assets/campaigns/<campaign>/` and add it to the campaign's `gallery`.
 
 ### Adding team photos
 
@@ -41,9 +43,11 @@ All text lives in [`src/data/site.ts`](src/data/site.ts): mission, vision, progr
 
 Astro resizes and converts photos to WebP at build time. Until a photo is set, the card shows the person's initials.
 
-## Page sections
+## Pages
 
-Hero (misty pine forest) · Who we are · Mission & vision · What we do · Core values · The story behind our logo · Team · Get involved · Footer
+- `/`: Hero (misty pine forest) · Who we are · Mission & vision · What we do · Core values · The story behind our logo · Team · In the media · Get involved · Footer (with the land acknowledgement)
+- `/campaigns/`: all campaigns and the campuses across the network
+- `/campaigns/ubc-vancouver/`: the University of British Columbia Vancouver campaign, with its timeline and photos
 
 ## Deploying
 
@@ -56,4 +60,5 @@ The workflow builds the site for the URL GitHub Pages serves it from, so it work
 ## Credits
 
 - Logo designed by [@arts_so.m](https://www.instagram.com/arts_so.m/)
+- Campaign photos: CEFA's own photo archive
 - Hero photo by [Dan Otis](https://unsplash.com/photos/OYFHT4X5isg) on Unsplash ([Unsplash License](https://unsplash.com/license))

@@ -1,16 +1,28 @@
 ---
 import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
-import { nav, site } from '@/data/site';
+import { landAcknowledgement, nav, site } from '@/data/site';
+import { withBase } from '@/utils/url';
 import logoMark from '@/assets/logo-mark.png';
 
 const year = new Date().getFullYear();
 ---
 
 <footer class="bg-forest-950 text-sage-100/80">
+  <section class="border-b border-white/10" aria-labelledby="land-title">
+    <div class="container-page grid gap-4 py-12 md:grid-cols-[1fr_3fr] md:gap-12 md:py-14">
+      <h2 id="land-title" class="eyebrow pt-1.5 font-sans text-sage-300">
+        Land acknowledgement
+      </h2>
+      <p class="font-display text-xl leading-relaxed text-pretty text-sage-50 sm:text-2xl">
+        {landAcknowledgement}
+      </p>
+    </div>
+  </section>
+
   <div class="container-page grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr]">
     <div>
-      <a href="#top" class="inline-flex items-center gap-3">
+      <a href={withBase()} class="inline-flex items-center gap-3">
         <span class="grid size-12 place-items-center rounded-full bg-sage-300">
           <Image src={logoMark} alt="" width={40} class="h-8 w-auto" />
         </span>
@@ -27,7 +39,7 @@ const year = new Date().getFullYear();
       <ul class="space-y-2 text-sm">
         {nav.map((l) => (
           <li>
-            <a href={`#${l.id}`} class="transition-colors hover:text-white">
+            <a href={withBase(l.href)} class="transition-colors hover:text-white">
               {l.label}
             </a>
           </li>
@@ -56,6 +68,28 @@ const year = new Date().getFullYear();
           >
             <Icon name="instagram" size={16} class="shrink-0" />
             {site.instagram.handle}
+          </a>
+        </li>
+        <li>
+          <a
+            href={site.linkedin.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 transition-colors hover:text-white"
+          >
+            <Icon name="linkedin" size={16} class="shrink-0" />
+            LinkedIn
+          </a>
+        </li>
+        <li>
+          <a
+            href={site.forms.updates}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 transition-colors hover:text-white"
+          >
+            <Icon name="bell" size={16} class="shrink-0" />
+            Get updates
           </a>
         </li>
       </ul>

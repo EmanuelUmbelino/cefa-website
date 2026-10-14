@@ -2,6 +2,7 @@
 import Icon from './Icon.astro';
 import SectionHeading from './SectionHeading.astro';
 import { programs } from '@/data/site';
+import { withBase } from '@/utils/url';
 ---
 
 <section id="what-we-do" class="bg-paper py-24 sm:py-32" aria-labelledby="what-we-do-title">
@@ -32,5 +33,12 @@ import { programs } from '@/data/site';
         </li>
       ))}
     </ol>
+
+    <div class="mt-12 flex justify-center" data-reveal>
+      <a href={withBase('/campaigns/')} class="btn-forest">
+        Explore our campaigns
+        <Icon name="arrow-right" size={18} />
+      </a>
+    </div>
   </div>
 </section>

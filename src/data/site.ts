@@ -11,6 +11,11 @@ import fernandaPhoto from '@/assets/team/fernanda-tomaselli.webp';
 
 const email = 'climateeducationforall@gmail.com';
 const instagramUrl = 'https://www.instagram.com/climateeducation4all/';
+const linkedinUrl = 'https://www.linkedin.com/company/climateeducationforall/';
+const joinFormUrl =
+  'https://docs.google.com/forms/d/e/1FAIpQLSf3-25LZZPO5zui5C_Omxka0MiCahlVIKexBjSwAH_xDcFm_w/viewform';
+const updatesFormUrl =
+  'https://docs.google.com/forms/d/e/1FAIpQLScHvTIc3mxnNXBEuqoKWz4g-9M2fM_vim_3LdPEKNcUpIuuzQ/viewform';
 
 export const site = {
   name: 'Climate Education for All',
@@ -23,17 +28,27 @@ export const site = {
     handle: '@climateeducation4all',
     url: instagramUrl,
   },
+  linkedin: {
+    handle: 'Climate Education for All',
+    url: linkedinUrl,
+  },
+  forms: {
+    join: joinFormUrl,
+    updates: updatesFormUrl,
+  },
   linktree: 'https://linktr.ee/climateeducationforall',
   foundedYear: 2025,
 };
 
-export const nav = [
-  { id: 'about', label: 'About' },
-  { id: 'what-we-do', label: 'What we do' },
-  { id: 'values', label: 'Values' },
-  { id: 'team', label: 'Team' },
-  { id: 'get-involved', label: 'Get involved' },
-] as const;
+/** `section` marks links to a homepage section (highlighted while it is in view). */
+export const nav: { label: string; href: string; section?: string }[] = [
+  { label: 'About', href: '/#about', section: 'about' },
+  { label: 'What we do', href: '/#what-we-do', section: 'what-we-do' },
+  { label: 'Campaigns', href: '/campaigns/' },
+  { label: 'Team', href: '/#team', section: 'team' },
+  { label: 'Media', href: '/#media', section: 'media' },
+  { label: 'Get involved', href: '/#get-involved', section: 'get-involved' },
+];
 
 export const hero = {
   tagline: 'Climate education for every university student.',
@@ -69,7 +84,7 @@ export const programs: { icon: IconName; title: string; text: string }[] = [
   {
     icon: 'megaphone',
     title: 'Campus campaigns',
-    text: 'CEFA chapters campaign for climate education to reach every student in their university, with actions and wins already at UBC and Acadia University.',
+    text: 'CEFA chapters campaign for climate education to reach every student at their university, with actions and wins already at UBC and Acadia University.',
   },
   {
     icon: 'message',
@@ -138,9 +153,11 @@ export const symbol = {
 export interface TeamMember {
   name: string;
   role: string;
-  bio: string;
+  bio?: string;
   /** Add a portrait by importing it from src/assets/team/. Initials are shown until then. */
   photo?: ImageMetadata;
+  /** Profile shown as an icon button next to the name. */
+  link: { kind: 'linkedin' | 'website'; url: string; label: string };
 }
 
 export const team: TeamMember[] = [
@@ -148,21 +165,80 @@ export const team: TeamMember[] = [
     name: 'Juliana Janot',
     role: 'Executive Director',
     photo: julianaPhoto,
-    bio: 'A Top 25 Environmentalist Under 25 in Canada and student at UBC, Juliana started her socio-environmental journey at age 11. She co-founded several initiatives, including the nonprofit Construindo o Futuro (CF), which empowers youth across Brazil to promote community sustainable development.',
+    bio: 'Named one of Canada’s Top 25 Environmentalists Under 25 and a student at UBC, Juliana began her socio-environmental journey at age 11. She has co-founded several initiatives, including the nonprofit Construindo o Futuro (CF), which empowers youth across Brazil to promote sustainable community development.',
+    link: {
+      kind: 'linkedin',
+      url: 'https://www.linkedin.com/in/juliana-janot/',
+      label: 'LinkedIn',
+    },
   },
   {
     name: 'Taylor Nitzsche',
     role: 'Program Director',
     photo: taylorPhoto,
-    bio: 'A Climate75 fellow with the Starfish Canada and George Kennedy Prize graduate from UBC in environmental management and sustainable development. Her projects span from climate communications to impact evaluation. Outside, she is a yoga teacher and avid practitioner.',
+    bio: 'A Climate75 fellow with The Starfish Canada and a UBC graduate in environmental management and sustainable development, awarded the George Kennedy Prize. Her projects range from climate communications to impact evaluation. Outside of work, she is a yoga teacher and avid practitioner.',
+    link: {
+      kind: 'linkedin',
+      url: 'https://www.linkedin.com/in/taylor-nitzsche/',
+      label: 'LinkedIn',
+    },
   },
   {
     name: 'Dr. Fernanda Tomaselli',
     role: 'Lead Advisor',
     photo: fernandaPhoto,
-    bio: 'UBC Assistant Professor with expertise in climate pedagogies, environmental communication, ecological economics, and conservation.',
+    bio: 'Assistant Professor in UBC’s Faculty of Forestry, with expertise in climate pedagogies, environmental communication, ecological economics and conservation.',
+    link: {
+      kind: 'website',
+      url: 'https://forestry.ubc.ca/faculty-profile/fernanda-tomaselli/',
+      label: 'UBC faculty profile',
+    },
+  },
+  {
+    name: 'Annabelle Lee',
+    role: 'Operations Director',
+    link: {
+      kind: 'linkedin',
+      url: 'https://www.linkedin.com/in/annabelle-lee-158777259/',
+      label: 'LinkedIn',
+    },
+  },
+  {
+    name: 'Arkapriya Majumder',
+    role: 'Marketing Director',
+    link: {
+      kind: 'linkedin',
+      url: 'https://www.linkedin.com/in/arkapriya-majumder/',
+      label: 'LinkedIn',
+    },
   },
 ];
+
+export interface MediaItem {
+  outlet: string;
+  title: string;
+  /** ISO date (YYYY-MM-DD). */
+  date: string;
+  byline: string;
+  summary: string;
+  url: string;
+}
+
+/** Newest first. */
+export const media: MediaItem[] = [
+  {
+    outlet: 'Canada’s National Observer',
+    title: 'Students educating students about climate change',
+    date: '2025-05-07',
+    byline: 'Opinion by Patricia Lane and Juliana Janot',
+    summary:
+      'How CEFA co-founder Juliana Janot is working to make sure every post-secondary student learns the causes, impacts and solutions of the climate crisis.',
+    url: 'https://www.nationalobserver.com/2025/05/07/opinion/juliana-janot-youth-climate-education',
+  },
+];
+
+export const landAcknowledgement =
+  'We respectfully acknowledge that our work takes place on many traditional, ancestral and unceded Indigenous territories across Turtle Island and beyond, and that Indigenous Traditional Knowledge is key to advancing meaningful climate solutions.';
 
 export const involve = {
   title: 'Join the movement',
@@ -170,10 +246,10 @@ export const involve = {
   ways: [
     {
       icon: 'sprout',
-      title: 'Become an ambassador',
-      text: 'Bring CEFA to your university. We will train you and connect you with students leading campaigns across the country.',
-      cta: 'Get in touch',
-      href: `mailto:${email}?subject=Becoming%20a%20CEFA%20ambassador`,
+      title: 'Join CEFA',
+      text: 'Volunteer with a campaign or bring CEFA to your university. We will train you and connect you with students leading campaigns across the country.',
+      cta: 'Apply to join',
+      href: joinFormUrl,
     },
     {
       icon: 'handshake',
@@ -183,11 +259,11 @@ export const involve = {
       href: `mailto:${email}?subject=Partnering%20with%20CEFA`,
     },
     {
-      icon: 'instagram',
-      title: 'Follow along',
-      text: 'Recruitment calls, events and campaign wins are shared first on our Instagram.',
-      cta: '@climateeducation4all',
-      href: instagramUrl,
+      icon: 'bell',
+      title: 'Get updates',
+      text: 'Hear about campaign wins, events and recruitment calls. Sign up and we will keep you in the loop.',
+      cta: 'Sign up for updates',
+      href: updatesFormUrl,
     },
   ] satisfies { icon: IconName; title: string; text: string; cta: string; href: string }[],
 };

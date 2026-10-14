@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
 import SectionHeading from './SectionHeading.astro';
 import { team } from '@/data/site';
 
@@ -21,16 +22,19 @@ const initials = (name: string) =>
       lead="Students, graduates and educators from the University of British Columbia, working with a growing network of volunteers and ambassadors."
     />
 
-    <ul class="grid gap-10 md:grid-cols-3 md:gap-8">
+    <ul class="flex flex-wrap justify-center gap-x-8 gap-y-12">
       {team.map((m) => (
-        <li class="flex flex-col" data-reveal>
+        <li
+          class="flex w-full flex-col sm:w-[calc(50%-1rem)] lg:w-[calc((100%-4rem)/3)]"
+          data-reveal
+        >
           <div class="relative mb-6 aspect-[4/5] overflow-hidden rounded-3xl bg-forest-700">
             {m.photo ? (
               <Image
                 src={m.photo}
                 alt={`Portrait of ${m.name}`}
                 widths={[360, 540, 720]}
-                sizes="(min-width: 768px) 33vw, 100vw"
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                 class="size-full object-cover object-top"
               />
             ) : (
@@ -43,8 +47,20 @@ const initials = (name: string) =>
             )}
           </div>
           <p class="eyebrow mb-2 text-clay-600">{m.role}</p>
-          <h3 class="mb-3 text-2xl font-medium text-forest-800">{m.name}</h3>
-          <p class="leading-relaxed text-pretty text-ink-muted">{m.bio}</p>
+          <div class="mb-3 flex items-center justify-between gap-4">
+            <h3 class="text-2xl font-medium text-forest-800">{m.name}</h3>
+            <a
+              href={m.link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${m.name}: ${m.link.label}`}
+              title={m.link.label}
+              class="grid size-10 shrink-0 place-items-center rounded-full bg-forest-700 text-sage-200 transition-colors hover:bg-clay-600 hover:text-white"
+            >
+              <Icon name={m.link.kind === 'linkedin' ? 'linkedin' : 'globe'} size={18} />
+            </a>
+          </div>
+          {m.bio && <p class="leading-relaxed text-pretty text-ink-muted">{m.bio}</p>}
         </li>
       ))}
     </ul>
