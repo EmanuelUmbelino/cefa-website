@@ -3,6 +3,8 @@ import type { IconName } from '@/components/Icon.astro';
 import julianaPhoto from '@/assets/team/juliana-janot.webp';
 import taylorPhoto from '@/assets/team/taylor-nitzsche.webp';
 import fernandaPhoto from '@/assets/team/fernanda-tomaselli.webp';
+import annabellePhoto from '@/assets/team/annabelle-lee.webp';
+import arkapriyaPhoto from '@/assets/team/arkapriya-majumder.webp';
 
 /**
  * All site copy lives here. Components only handle layout.
@@ -197,6 +199,7 @@ export const team: TeamMember[] = [
   {
     name: 'Annabelle Lee',
     role: 'Operations Director',
+    photo: annabellePhoto,
     link: {
       kind: 'linkedin',
       url: 'https://www.linkedin.com/in/annabelle-lee-158777259/',
@@ -206,6 +209,7 @@ export const team: TeamMember[] = [
   {
     name: 'Arkapriya Majumder',
     role: 'Marketing Director',
+    photo: arkapriyaPhoto,
     link: {
       kind: 'linkedin',
       url: 'https://www.linkedin.com/in/arkapriya-majumder/',

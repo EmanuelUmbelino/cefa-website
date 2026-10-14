@@ -2,7 +2,7 @@
 @import '@fontsource-variable/inter';
 @import '@fontsource-variable/fraunces';
 
-/* CEFA palette: forest #0E5140, sage #D7DBB4, clay #AC4524 */
+/* CEFA brand palette (Sophia Mey, 2025): forest #0E5140, sage #D7DBB4, orange #D94F2B, clay #AC4524 */
 @theme {
   --color-forest-50: #eef5f2;
   --color-forest-100: #d5e7df;
@@ -23,7 +23,7 @@
   --color-sage-400: #c2c891;
   --color-sage-500: #a8ae6c;
 
-  --color-clay-400: #cc6340;
+  --color-clay-400: #d94f2b;
   --color-clay-500: #bd522e;
   --color-clay-600: #ac4524;
   --color-clay-700: #8e381c;

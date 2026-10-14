@@ -5,7 +5,7 @@ import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import Icon from '@/components/Icon.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
-import { network, ubc } from '@/data/campaigns';
+import { network, theoryOfChange, ubc } from '@/data/campaigns';
 import { site } from '@/data/site';
 import { withBase } from '@/utils/url';
 ---
@@ -80,6 +80,45 @@ import { withBase } from '@/utils/url';
             </a>
           </div>
         </article>
+      </div>
+    </section>
+
+    <section class="bg-forest-800 py-24 text-sage-50 sm:py-32" aria-labelledby="change-title">
+      <div class="container-page">
+        <SectionHeading
+          id="change-title"
+          eyebrow="Our theory of change"
+          title="How a campaign creates change"
+          lead="A course requirement today means every graduate who follows learns about the climate crisis — and brings that knowledge into their field, their vote and their community."
+          tone="dark"
+        />
+        <ol class="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          {theoryOfChange.map((step, i) => (
+            <li
+              class="relative flex flex-col rounded-2xl border border-white/10 bg-forest-950/30 p-6"
+              data-reveal
+            >
+              <span class="mb-5 flex items-center gap-3">
+                <span class="grid size-9 shrink-0 place-items-center rounded-full bg-sage-300 font-display text-lg text-forest-900">
+                  {i + 1}
+                </span>
+                <span class="eyebrow text-sage-300">{step.stage}</span>
+              </span>
+              <h3 class="mb-3 text-xl leading-snug font-medium text-white">{step.title}</h3>
+              <ul class="space-y-1.5 text-sm leading-relaxed text-sage-100/80">
+                {step.points.map((p) => (
+                  <li class="flex gap-2">
+                    <span
+                      class="mt-2 size-1 shrink-0 rounded-full bg-sage-300"
+                      aria-hidden="true"
+                    />
+                    {p}
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
 

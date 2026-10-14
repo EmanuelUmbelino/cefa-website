@@ -138,6 +138,38 @@ export const ubc = {
   ] satisfies Photo[],
 };
 
+/** CEFA's theory of change for campus campaigns (from the 2025 Theory of Change slide). */
+export const theoryOfChange = [
+  {
+    stage: 'Inputs',
+    title: 'Students organize',
+    points: ['Volunteers', 'A professor ally', 'Knowledge of the university context', 'Time'],
+  },
+  {
+    stage: 'Outputs',
+    title: 'A campaign',
+    points: ['A student survey', 'Meetings with deans'],
+  },
+  {
+    stage: 'Immediate outcome',
+    title: 'A climate course requirement',
+    points: ['More students aware of climate change and how to act'],
+  },
+  {
+    stage: 'Intermediate outcome',
+    title: 'Graduates take climate action',
+    points: [
+      'Transforming their professional fields',
+      'Voting and advocating for climate policies',
+    ],
+  },
+  {
+    stage: 'Impact',
+    title: 'An end to climate inaction',
+    points: ['Climate policies', 'Low-carbon sectors'],
+  },
+];
+
 /** Universities where ambassadors from CEFA's first cohort are building campaigns. */
 export const network = [
   { university: 'Acadia University', place: 'Wolfville, NS' },
