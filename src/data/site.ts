@@ -24,7 +24,7 @@ export const site = {
   shortName: 'CEFA',
   title: 'Climate Education for All (CEFA)',
   description:
-    'CEFA is a student-led movement expanding climate education to every university student — empowering a generation of climate-conscious professionals to drive change in their fields.',
+    'CEFA is a student-led movement expanding climate education to every university student, empowering a generation of climate-conscious professionals to drive change in their fields.',
   email,
   instagram: {
     handle: '@climateeducation4all',
@@ -54,13 +54,13 @@ export const nav: { label: string; href: string; section?: string }[] = [
 
 export const hero = {
   tagline: 'Climate education for every university student.',
-  lead: 'A student-led network expanding climate literacy across universities — from Canada to the world — so every graduate is ready to act on the climate emergency in their field.',
+  lead: 'A student-led network expanding climate literacy across universities, from Canada to the world, so every graduate is ready to act on the climate emergency in their field.',
 };
 
 export const about = {
   title: 'A student-led movement for climate literacy',
   paragraphs: [
-    'Climate Education for All (CEFA) is an organization dedicated to expanding climate literacy across universities. We believe that understanding the climate emergency — its causes and its impacts — should not be limited to environmental degrees.',
+    'Climate Education for All (CEFA) is an organization dedicated to expanding climate literacy across universities. We believe that understanding the causes and impacts of the climate emergency should not be limited to environmental degrees.',
     'Engineers, nurses, economists, artists, lawyers: every profession will shape how we respond to the climate crisis. CEFA brings students together to make climate education part of every university experience.',
   ],
   stats: [
@@ -74,7 +74,7 @@ export const mission = {
   mission:
     'To inspire a student-led movement that expands climate education to all university students, empowering a generation of climate-conscious professionals to make actionable change in their fields.',
   vision:
-    'Every young professional understands the climate emergency — its causes and impacts — and is actively engaged in driving climate solutions.',
+    'Every young professional understands the causes and impacts of the climate emergency and is actively engaged in driving climate solutions.',
 };
 
 export const programs: { icon: IconName; title: string; text: string }[] = [
