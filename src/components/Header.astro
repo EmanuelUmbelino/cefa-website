@@ -8,6 +8,9 @@ import logoMark from '@/assets/logo-mark.png';
 /** Page links (not homepage sections) stay highlighted on their own pages. */
 const isCurrentPage = (l: (typeof nav)[number]) =>
   !l.section && Astro.url.pathname.startsWith(withBase(l.href).replace(/\/$/, ''));
+
+/** Page links come after the homepage sections, set apart by a divider. */
+const startsPages = (i: number) => !nav[i]?.section && !!nav[i - 1]?.section;
 ---
 
 <a
@@ -37,8 +40,13 @@ const isCurrentPage = (l: (typeof nav)[number]) =>
     </a>
 
     <ul class="hidden items-center gap-1 lg:flex">
-      {nav.map((l) => (
-        <li>
+      {nav.map((l, i) => (
+        <li class="flex items-center gap-1">
+          {startsPages(i) && (
+            <span class="px-1 text-sage-100/40 select-none" aria-hidden="true">
+              |
+            </span>
+          )}
           <a
             href={withBase(l.href)}
             data-nav-link={l.section}
@@ -78,8 +86,8 @@ const isCurrentPage = (l: (typeof nav)[number]) =>
     class="border-t border-white/10 bg-forest-900/95 backdrop-blur-md lg:hidden"
   >
     <ul class="container-page flex flex-col py-3">
-      {nav.map((l) => (
-        <li>
+      {nav.map((l, i) => (
+        <li class:list={[startsPages(i) && 'mt-2 border-t border-white/10 pt-2']}>
           <a
             href={withBase(l.href)}
             class="block rounded-xl px-3 py-3 text-base text-sage-100/85 transition-colors hover:bg-white/5 hover:text-white"

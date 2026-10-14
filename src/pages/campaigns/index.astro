@@ -5,13 +5,14 @@ import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import Icon from '@/components/Icon.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
-import { network, networkCover, theoryOfChange, ubc } from '@/data/campaigns';
-import { site } from '@/data/site';
+import { network, theoryOfChange, ubc } from '@/data/campaigns';
+import { credits, site } from '@/data/site';
+import forest from '@/assets/hero-forest.jpg';
 import { withBase } from '@/utils/url';
 ---
 
 <Base
-  title="Campaigns | CEFA"
+  title="Campaigns · CEFA"
   description="Student-led campaigns for climate education at universities across Canada and beyond, starting with the University of British Columbia Vancouver."
 >
   <Header />
@@ -21,14 +22,14 @@ import { withBase } from '@/utils/url';
       aria-labelledby="campaigns-title"
     >
       <Image
-        src={networkCover.src}
-        alt={networkCover.alt}
+        src={forest}
+        alt="Dense conifer forest on a mountainside, with mist drifting over the treetops"
         widths={[640, 960, 1280, 1600, 2400]}
         sizes="100vw"
         quality={80}
         loading="eager"
         fetchpriority="high"
-        class="absolute inset-0 -z-20 size-full object-cover object-[center_60%]"
+        class="absolute inset-0 -z-20 size-full object-cover object-[center_75%]"
       />
       <div
         class="absolute inset-0 -z-10 bg-gradient-to-b from-forest-950/70 via-forest-950/45 to-forest-950/95"
@@ -52,6 +53,13 @@ import { withBase } from '@/utils/url';
           education reaches every degree.
         </p>
       </div>
+      <p class="absolute right-4 bottom-3 text-[0.65rem] text-sage-100/50 sm:right-6">
+        Photo:{' '}
+        <a href={credits.heroPhoto.url} class="underline-offset-2 hover:underline">
+          {credits.heroPhoto.author}
+        </a>{' '}
+        / Unsplash
+      </p>
     </section>
 
     <section class="bg-paper py-24 sm:py-32" aria-labelledby="ubc-card-title">
@@ -72,7 +80,7 @@ import { withBase } from '@/utils/url';
           <div class="flex flex-col p-8 sm:p-12">
             <p class="eyebrow mb-4 flex items-center gap-2 text-clay-600">
               <Icon name="map-pin" size={16} />
-              {ubc.location} | Since {ubc.since.toLowerCase()}
+              {ubc.location} · Since {ubc.since.toLowerCase()}
             </p>
             <h2
               id="ubc-card-title"

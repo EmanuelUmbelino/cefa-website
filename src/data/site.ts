@@ -3,8 +3,8 @@ import type { IconName } from '@/components/Icon.astro';
 import julianaPhoto from '@/assets/team/juliana-janot.webp';
 import taylorPhoto from '@/assets/team/taylor-nitzsche.webp';
 import fernandaPhoto from '@/assets/team/fernanda-tomaselli.webp';
-import annabellePhoto from '@/assets/team/annabelle-lee.webp';
-import arkapriyaPhoto from '@/assets/team/arkapriya-majumder.webp';
+import annabellePhoto from '@/assets/team/annabelle-lee-portrait.webp';
+import arkapriyaPhoto from '@/assets/team/arkapriya-majumder-portrait.webp';
 
 /**
  * All site copy lives here. Components only handle layout.
@@ -46,10 +46,10 @@ export const site = {
 export const nav: { label: string; href: string; section?: string }[] = [
   { label: 'About', href: '/#about', section: 'about' },
   { label: 'What we do', href: '/#what-we-do', section: 'what-we-do' },
-  { label: 'Campaigns', href: '/campaigns/' },
   { label: 'Team', href: '/#team', section: 'team' },
   { label: 'Media', href: '/#media', section: 'media' },
   { label: 'Get involved', href: '/#get-involved', section: 'get-involved' },
+  { label: 'Campaigns', href: '/campaigns/' },
 ];
 
 export const hero = {

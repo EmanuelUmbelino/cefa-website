@@ -10,7 +10,7 @@ import { site } from '@/data/site';
 import { withBase } from '@/utils/url';
 ---
 
-<Base title={`${ubc.name} | CEFA Campaigns`} description={ubc.summary}>
+<Base title={`${ubc.name} · CEFA campaigns`} description={ubc.summary}>
   <Header />
   <main id="main">
     <section
@@ -42,7 +42,7 @@ import { withBase } from '@/utils/url';
         </a>
         <p class="eyebrow mb-4 flex items-center gap-2 text-sage-300" data-reveal>
           <Icon name="map-pin" size={16} />
-          {ubc.location} | Campaign
+          Campaign · {ubc.location}
         </p>
         <h1
           id="ubc-title"
