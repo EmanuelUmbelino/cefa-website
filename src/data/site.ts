@@ -23,6 +23,12 @@ export const site = {
   name: 'Climate Education for All',
   shortName: 'CEFA',
   title: 'Climate Education for All (CEFA)',
+  /** Homepage `<title>`: the name plus what CEFA does, under ~65 characters. */
+  metaTitle: 'Climate Education for All (CEFA) · Student-led climate literacy',
+  /** Search-result snippet: kept under ~160 characters so it is not cut off. */
+  metaDescription:
+    'A student-led movement bringing climate education to every university student, so graduates in every field are ready to act on the climate emergency.',
+  ogImageAlt: 'The CEFA logo in a cream circle over a misty conifer forest',
   description:
     'CEFA is a student-led movement expanding climate education to every university student, empowering a generation of climate-conscious professionals to drive change in their fields.',
   email,

@@ -10,7 +10,14 @@ import { site } from '@/data/site';
 import { withBase } from '@/utils/url';
 ---
 
-<Base title={`${ubc.name} · CEFA campaigns`} description={ubc.summary}>
+<Base
+  title="UBC Vancouver climate education campaign · CEFA"
+  description={ubc.metaDescription}
+  breadcrumbs={[
+    { name: 'Campaigns', path: '/campaigns/' },
+    { name: ubc.shortName, path: '/campaigns/ubc-vancouver/' },
+  ]}
+>
   <Header />
   <main id="main">
     <section

@@ -37,10 +37,12 @@ export const ubc = {
   shortName: 'UBC Vancouver',
   location: 'Vancouver, BC',
   since: 'Fall 2024',
+  metaDescription:
+    'Students at UBC Vancouver have surveyed thousands of peers and brought the case for climate education to deans, Faculty councils and course instructors.',
   summary:
     'Where the CEFA network began. Students at UBC Vancouver have surveyed thousands of their peers and brought the case for climate education to deans, Faculty councils and course instructors across campus.',
   intro: [
-    'The campaign at the University of British Columbia Vancouver started with a handful of students in the fall of 2024 and grew into the model behind the whole CEFA network. Its goal is simple: every UBC student, in every degree, should learn the basics of the climate emergency: its causes, its impacts and how their field can help solve it.',
+    'The campaign at the University of British Columbia Vancouver started with a handful of students in the fall of 2024 and grew into the model behind the whole CEFA network. Its goal is simple: every UBC student, in every degree, should learn the causes and impacts of the climate emergency and how their field can help solve it.',
     'Working Faculty by Faculty, our volunteers collect evidence of student demand, meet with deans and associate deans, present to Faculty councils and work with instructors to bring climate content into core courses.',
   ],
   cover: {
