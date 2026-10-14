@@ -1,4 +1,5 @@
 import type { ImageMetadata } from 'astro';
+import networkVolunteers from '@/assets/campaigns/network-volunteers.jpg';
 import onboardingParty from '@/assets/campaigns/ubc/onboarding-party.jpg';
 import sustainabilityFellows from '@/assets/campaigns/ubc/sustainability-fellows-2024.jpg';
 import survey from '@/assets/campaigns/ubc/survey-2025.jpg';
@@ -14,6 +15,12 @@ import sustainabilityHub from '@/assets/campaigns/ubc/sustainability-hub.jpg';
  * Campaign pages. Each campaign gets a card on /campaigns/ and its own page.
  * Photos come from CEFA's shared Drive folder (UBC CEFA Pictures).
  */
+
+/** Top image of the /campaigns/ page. */
+export const networkCover = {
+  src: networkVolunteers,
+  alt: 'About forty CEFA volunteers posing together in front of a projected CEFA logo',
+};
 
 export interface TimelineEntry {
   date: string;

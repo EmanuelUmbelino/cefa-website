@@ -200,6 +200,7 @@ export const team: TeamMember[] = [
     name: 'Annabelle Lee',
     role: 'Operations Director',
     photo: annabellePhoto,
+    bio: 'A Philosophy, Politics and Economics student at UBC Okanagan, Annabelle works where education, development and governance meet. Annabelle has represented students across the province with the BC Federation of Students, served on Okanagan College’s Board of Governors and founded Arts for Education, an annual fundraiser for education programs in Uganda and Kelowna.',
     link: {
       kind: 'linkedin',
       url: 'https://www.linkedin.com/in/annabelle-lee-158777259/',
@@ -210,6 +211,7 @@ export const team: TeamMember[] = [
     name: 'Arkapriya Majumder',
     role: 'Marketing Director',
     photo: arkapriyaPhoto,
+    bio: 'An Economics, Business and Statistics student at UBC, Arkapriya is passionate about using data and business strategy to drive more sustainable decisions. Arkapriya trained in carbon accounting at UBC Sauder’s SME Climate Clinic, works with The Starfish Canada and leads CEFA’s social media and storytelling.',
     link: {
       kind: 'linkedin',
       url: 'https://www.linkedin.com/in/arkapriya-majumder/',
