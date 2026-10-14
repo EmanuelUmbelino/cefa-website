@@ -149,7 +149,7 @@ export const symbol = {
       text: 'A symbol of peace, hope, justice and a climate-safe future.',
     },
   ],
-  credit: { name: '@arts_so.m', url: 'https://www.instagram.com/arts_so.m/' },
+  credit: { name: 'Sophia Mey', handle: '@arts_so.m', url: 'https://www.instagram.com/arts_so.m/' },
 };
 
 export interface TeamMember {

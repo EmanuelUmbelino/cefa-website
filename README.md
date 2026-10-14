@@ -6,7 +6,7 @@ Website of **Climate Education for All (CEFA)**, a student-led movement expandin
 
 - [Astro](https://astro.build): static site, zero JavaScript by default (one small script for the menu and scroll effects)
 - [Tailwind CSS v4](https://tailwindcss.com): palette built around `#0E5140` (forest), `#D7DBB4` (sage) and `#AC4524` (clay)
-- Fonts: Fraunces (headings) and Inter (body), self-hosted via Fontsource
+- Fonts: Fraunces (headings) and Source Sans 3 (body, from CEFA's brand guide), self-hosted via Fontsource
 - TypeScript (strictest), ESLint (with a11y rules) and Prettier
 - GitHub Actions: checks on every pull request, deploy to GitHub Pages on push to `main`
 
@@ -59,6 +59,6 @@ The workflow builds the site for the URL GitHub Pages serves it from, so it work
 
 ## Credits
 
-- Logo designed by [@arts_so.m](https://www.instagram.com/arts_so.m/)
+- Logo and colour palette designed by Sophia Mey ([@arts_so.m](https://www.instagram.com/arts_so.m/))
 - Campaign photos: CEFA's own photo archive
 - Hero photo by [Dan Otis](https://unsplash.com/photos/OYFHT4X5isg) on Unsplash ([Unsplash License](https://unsplash.com/license))

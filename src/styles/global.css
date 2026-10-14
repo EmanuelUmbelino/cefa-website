@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-@import '@fontsource-variable/inter';
+@import '@fontsource-variable/source-sans-3';
 @import '@fontsource-variable/fraunces';
 
 /* CEFA brand palette (Sophia Mey, 2025): forest #0E5140, sage #D7DBB4, orange #D94F2B, clay #AC4524 */
@@ -32,7 +32,7 @@
   --color-ink: #13261f;
   --color-ink-muted: #4a5d55;
 
-  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Source Sans 3 Variable', ui-sans-serif, system-ui, sans-serif;
   --font-display: 'Fraunces Variable', ui-serif, Georgia, serif;
 
   --animate-mist: mist 40s ease-in-out infinite alternate;
