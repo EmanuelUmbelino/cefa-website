@@ -5,7 +5,7 @@ import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import Icon from '@/components/Icon.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
-import { network, theoryOfChange, ubc } from '@/data/campaigns';
+import { acadia, network, theoryOfChange, ubc } from '@/data/campaigns';
 import { credits, site } from '@/data/site';
 import forest from '@/assets/hero-forest.jpg';
 import { withBase } from '@/utils/url';
@@ -102,6 +102,36 @@ import { withBase } from '@/utils/url';
               Explore the campaign
               <Icon name="arrow-right" size={18} />
             </a>
+          </div>
+        </article>
+
+        <article
+          class="mt-8 grid overflow-hidden rounded-3xl border border-sage-300 bg-white lg:grid-cols-[1fr_1.15fr]"
+          aria-labelledby="acadia-card-title"
+          data-reveal
+        >
+          <div class="flex flex-col justify-center p-8 sm:p-12">
+            <p class="eyebrow mb-4 flex items-center gap-2 text-clay-600">
+              <Icon name="map-pin" size={16} />
+              {acadia.location}
+            </p>
+            <h2
+              id="acadia-card-title"
+              class="mb-4 text-3xl leading-tight font-medium text-balance text-forest-800 sm:text-4xl"
+            >
+              {acadia.name}
+            </h2>
+            <p class="text-lg leading-relaxed text-pretty text-ink-muted">{acadia.summary}</p>
+            <p class="mt-6 text-sm text-ink-muted">Full campaign page coming soon.</p>
+          </div>
+          <div class="relative aspect-[4/3] overflow-hidden lg:order-first lg:aspect-auto lg:min-h-[28rem]">
+            <Image
+              src={acadia.photo.src}
+              alt={acadia.photo.alt}
+              widths={[640, 960, 1280]}
+              sizes="(min-width: 1024px) 45vw, 100vw"
+              class="absolute inset-0 size-full object-cover object-[center_35%]"
+            />
           </div>
         </article>
       </div>

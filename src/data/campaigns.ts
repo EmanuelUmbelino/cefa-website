@@ -1,5 +1,6 @@
 import type { ImageMetadata } from 'astro';
 import onboardingParty from '@/assets/campaigns/ubc/onboarding-party.jpg';
+import onboardingParty2026 from '@/assets/campaigns/ubc/onboarding-party-2026.jpg';
 import sustainabilityFellows from '@/assets/campaigns/ubc/sustainability-fellows-2024.jpg';
 import survey from '@/assets/campaigns/ubc/survey-2025.jpg';
 import artsCommittee from '@/assets/campaigns/ubc/arts-committee.jpg';
@@ -9,6 +10,7 @@ import scienceDean from '@/assets/campaigns/ubc/science-associate-dean.jpg';
 import volunteerSocial from '@/assets/campaigns/ubc/volunteer-social.jpg';
 import lfsSymposium from '@/assets/campaigns/ubc/lfs-symposium.jpg';
 import sustainabilityHub from '@/assets/campaigns/ubc/sustainability-hub.jpg';
+import acadiaSurvey from '@/assets/campaigns/acadia/survey-table.jpg';
 
 /**
  * Campaign pages. Each campaign gets a card on /campaigns/ and its own page.
@@ -45,16 +47,24 @@ export const ubc = {
     'The campaign at the University of British Columbia Vancouver started with a handful of students in the fall of 2024 and grew into the model behind the whole CEFA network. Its goal is simple: every UBC student, in every degree, should learn the causes and impacts of the climate emergency and how their field can help solve it.',
     'Working Faculty by Faculty, our volunteers collect evidence of student demand, meet with deans and associate deans, present to Faculty councils and work with instructors to bring climate content into core courses.',
   ],
+  /** Card photo on /campaigns/. Kept square-ish, so it fits the card. */
   cover: {
     src: onboardingParty,
     alt: 'A large group of students posing in front of a projected CEFA logo at the campaign’s first volunteer onboarding party',
   },
+  /** Wide photo at the top of the campaign page. */
+  hero: {
+    src: onboardingParty2026,
+    alt: 'More than fifty CEFA volunteers posing in front of a projected CEFA logo at the campaign’s second onboarding party',
+  },
+  // These numbers are kept up to date in CEFA's campaign spreadsheet:
+  // https://docs.google.com/spreadsheets/d/1hLf-NbGsb2qUpcfjMaqn0lxBsA2wp6LvP64VTJLCzKo/edit
   stats: [
     {
-      value: '90%',
-      label: 'of 2,700+ surveyed UBC undergraduates support mandatory climate education',
+      value: '+91%',
+      label: 'of 2,762 surveyed UBC undergraduates support mandatory climate education',
     },
-    { value: '37', label: 'volunteers at our second onboarding party, in October 2026' },
+    { value: '54', label: 'volunteers at our second onboarding party, in October 2026' },
     { value: '2', label: 'years of student organizing, since our first meeting in fall 2024' },
   ],
   timeline: [
@@ -68,6 +78,7 @@ export const ubc = {
       date: 'Mar 2025',
       text: 'Meeting with the Dean and Associate Dean of Land and Food Systems (LFS).',
     },
+    { date: 'Apr 2025', text: 'Meeting with the UBC School of Nursing.' },
     {
       date: 'May 2025',
       text: 'CEFA is featured in Canada’s National Observer.',
@@ -76,19 +87,46 @@ export const ubc = {
     { date: 'Nov 2025', text: 'Meeting with the Dean of the Sauder School of Business.' },
     { date: 'Dec 2025', text: 'Meeting with the Associate Dean of Arts.' },
     { date: 'Jan 2026', text: 'First volunteer onboarding party, with about 17 new volunteers.' },
-    { date: 'Feb 2026', text: 'Presentation to the LFS Faculty Council.' },
+    { date: 'Feb 2026', text: 'Presentation to the Faculty of Land and Food Systems Council.' },
     { date: 'Feb 2026', text: 'Second meeting with the Associate Dean of Arts.' },
     { date: 'Mar 2026', text: 'Meeting with the COMM 105 coordinator (Business).', win: true },
     { date: 'Apr 2026', text: 'Meeting with the Associate Dean of Science.', win: true },
     { date: 'May 2026', text: 'Presentation to the Arts Faculty Council.' },
-    { date: 'May 2026', text: 'LFS Climate Education Symposium.', win: true },
+    {
+      date: 'May 2026',
+      text: 'Faculty of Land and Food Systems Climate Education Symposium.',
+      win: true,
+    },
     { date: 'Jun 2026', text: 'Meeting with the CIVL 250 instructor (Engineering).', win: true },
-    { date: 'Jun 2026', text: 'Partnership meeting with the AMS, UBC’s student society.' },
+    {
+      date: 'Jun 2026',
+      text: 'Partnership meeting with the Alma Mater Society, UBC’s student union.',
+    },
     { date: 'Jul 2026', text: 'Meeting with the EDST 201 coordinator (Education).', win: true },
     { date: 'Aug 2026', text: 'Creation of the CEFA Teaching Resource.' },
     { date: 'Aug 2026', text: 'Meeting with the Economics Director.' },
-    { date: 'Oct 2026', text: 'Second volunteer onboarding party, with 37 volunteers.' },
+    { date: 'Oct 2026', text: 'Second volunteer onboarding party, with 54 volunteers.' },
   ] satisfies TimelineEntry[],
+  survey: {
+    responses: '2,762',
+    method:
+      'Responses from undergraduate students across all UBC Faculties and schools. Only one response was allowed per student, and IP addresses were tracked.',
+    questions: [
+      {
+        question:
+          'Should every student graduate with a basic understanding of climate change and its impacts?',
+        yes: 94,
+      },
+      {
+        question: 'Should UBC integrate basic climate education into all undergraduate programs?',
+        yes: 91,
+        breakdown: [
+          { share: 29, answer: 'Yes, even if it slightly increases students’ workload' },
+          { share: 62, answer: 'Yes, if it doesn’t increase students’ workload' },
+        ],
+      },
+    ],
+  },
   throughout:
     'Throughout the campaign, our partnership with the UBC Sustainability Hub has brought joint events, mutual support and connections with professors.',
   gallery: [
@@ -110,7 +148,7 @@ export const ubc = {
     {
       src: lfsFacultyCouncil,
       alt: 'A CEFA organizer presenting to a room of faculty members next to projected slides',
-      caption: 'Presenting to the LFS Faculty Council, February 2026',
+      caption: 'Presenting to the Faculty of Land and Food Systems Council, February 2026',
     },
     {
       src: comm105,
@@ -129,8 +167,8 @@ export const ubc = {
     },
     {
       src: lfsSymposium,
-      alt: 'An audience in a lecture hall watching a presentation at the LFS Climate Education Symposium',
-      caption: 'LFS Climate Education Symposium, May 2026',
+      alt: 'An audience in a lecture hall watching a presentation at the Faculty of Land and Food Systems Climate Education Symposium',
+      caption: 'Faculty of Land and Food Systems Climate Education Symposium, May 2026',
     },
     {
       src: sustainabilityHub,
@@ -183,3 +221,15 @@ export const network = [
   { university: 'Simon Fraser University', place: 'Burnaby, BC' },
   { university: 'Ludwig Maximilian University of Munich', place: 'Munich, Germany' },
 ];
+
+/** Campaigns that do not have their own page yet. */
+export const acadia = {
+  name: 'Acadia University',
+  location: 'Wolfville, NS',
+  summary:
+    'Students at Acadia University are running a CEFA campaign of their own, starting by surveying their peers on campus.',
+  photo: {
+    src: acadiaSurvey,
+    alt: 'Two smiling Acadia students giving a thumbs up behind a CEFA table with a “30-second survey” sign, Acadia water bottles and a tablet showing a QR code',
+  },
+};

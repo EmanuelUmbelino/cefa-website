@@ -97,8 +97,21 @@ const year = new Date().getFullYear();
   </div>
 
   <div class="border-t border-white/10">
-    <p class="container-page py-6 text-xs text-sage-100/50">
-      © {year} {site.title}. All rights reserved.
-    </p>
+    <div class="container-page flex flex-col gap-2 py-6 text-xs text-sage-100/50 sm:flex-row sm:items-center sm:justify-between">
+      <p>
+        © {year} {site.title}. All rights reserved.
+      </p>
+      <p>
+        Designed and developed by{' '}
+        <a
+          href="https://cajuice.co"
+          target="_blank"
+          rel="noopener"
+          class="text-sage-100/70 underline-offset-2 transition-colors hover:text-white hover:underline"
+        >
+          Cajuice
+        </a>
+      </p>
+    </div>
   </div>
 </footer>

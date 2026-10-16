@@ -5,6 +5,8 @@ import taylorPhoto from '@/assets/team/taylor-nitzsche.webp';
 import fernandaPhoto from '@/assets/team/fernanda-tomaselli.webp';
 import annabellePhoto from '@/assets/team/annabelle-lee-portrait.webp';
 import arkapriyaPhoto from '@/assets/team/arkapriya-majumder-portrait.webp';
+import acadiaSurvey from '@/assets/campaigns/acadia/survey-table.jpg';
+import ubcSurvey from '@/assets/campaigns/ubc/survey-2025.jpg';
 
 /**
  * All site copy lives here. Components only handle layout.
@@ -48,19 +50,32 @@ export const site = {
   foundedYear: 2025,
 };
 
-/** `section` marks links to a homepage section (highlighted while it is in view). */
-export const nav: { label: string; href: string; section?: string }[] = [
+/**
+ * `section` marks links to a homepage section (highlighted while it is in view).
+ * `children` are shown in a dropdown on desktop and indented on mobile.
+ */
+export const nav: {
+  label: string;
+  href: string;
+  section?: string;
+  children?: { label: string; href: string }[];
+}[] = [
   { label: 'About', href: '/#about', section: 'about' },
   { label: 'What we do', href: '/#what-we-do', section: 'what-we-do' },
   { label: 'Team', href: '/#team', section: 'team' },
   { label: 'Media', href: '/#media', section: 'media' },
   { label: 'Get involved', href: '/#get-involved', section: 'get-involved' },
-  { label: 'Campaigns', href: '/campaigns/' },
+  { label: 'Ambassadors Program', href: '/ambassadors-program/' },
+  {
+    label: 'Campaigns',
+    href: '/campaigns/',
+    children: [{ label: 'UBC', href: '/campaigns/ubc-vancouver/' }],
+  },
 ];
 
 export const hero = {
   tagline: 'Climate education for every university student.',
-  lead: 'A student-led network expanding climate literacy across universities, from Canada to the world, so every graduate is ready to act on the climate emergency in their field.',
+  lead: 'A student-led network expanding climate education requirements in universities, from Canada to the world, empowering graduates to advance climate solutions across all professional fields.',
 };
 
 export const about = {
@@ -72,7 +87,6 @@ export const about = {
   stats: [
     { value: '2025', label: 'Founded by students in Canada' },
     { value: '9', label: 'Universities in our ambassador trainings' },
-    { value: '2', label: 'Campus campaigns, at UBC and Acadia' },
   ],
 };
 
@@ -83,23 +97,61 @@ export const mission = {
     'Every young professional understands the causes and impacts of the climate emergency and is actively engaged in driving climate solutions.',
 };
 
-export const programs: { icon: IconName; title: string; text: string }[] = [
+export const programs: {
+  title: string;
+  cta: string;
+  href: string;
+  image: { src: ImageMetadata; alt: string };
+}[] = [
   {
-    icon: 'graduation',
-    title: 'Ambassador trainings',
-    text: 'We train student ambassadors to lead climate education on their own campuses. Our first workshops brought together ambassadors from nine universities.',
+    title: 'Ambassadors Program',
+    cta: 'Learn More',
+    href: '/ambassadors-program/',
+    image: {
+      src: acadiaSurvey,
+      alt: 'Two Acadia students giving a thumbs up behind a CEFA survey table',
+    },
   },
   {
-    icon: 'megaphone',
-    title: 'Campus campaigns',
-    text: 'CEFA chapters campaign for climate education to reach every student at their university, with actions and wins already at UBC and Acadia University.',
-  },
-  {
-    icon: 'message',
-    title: 'Community spaces',
-    text: 'Climate conversations too often happen in silos. We host gatherings, like our community potluck at the UBC Farm, where people share food, ideas and resources.',
+    title: 'Campus Campaigns',
+    cta: 'Explore our campaigns',
+    href: '/campaigns/',
+    image: {
+      src: ubcSurvey,
+      alt: 'A full event hall at UBC facing a screen that asks “Do you support climate education?”',
+    },
   },
 ];
+
+/** The Ambassadors Program page. Cohort profiles and training photos are still to come. */
+export const ambassadorsProgram = {
+  metaDescription:
+    'CEFA trains university students to lead climate education campaigns on their own campuses, with ongoing mentorship and a peer learning community.',
+  title: 'Students leading climate education on their own campuses',
+  lead: 'Our Ambassadors Program trains university students to bring CEFA campaigns to their universities. Our first cohort brought together ambassadors from nine universities.',
+  parts: [
+    {
+      icon: 'graduation',
+      title: 'Trainings',
+      text: 'Online workshops that prepare ambassadors to start a campaign: understanding their university, surveying students and meeting with decision-makers.',
+    },
+    {
+      icon: 'sprout',
+      title: 'Ongoing mentorship',
+      text: 'Ambassadors keep working with CEFA organizers who have run a campaign before, with support at every stage of their own.',
+    },
+    {
+      icon: 'users',
+      title: 'Peer learning community',
+      text: 'Ambassadors from different universities meet to share what works, swap resources and support each other.',
+    },
+    {
+      icon: 'lightbulb',
+      title: 'Research and best practices',
+      text: 'We study what each campaign learns and turn it into lessons and best practices for the next cohort.',
+    },
+  ] satisfies { icon: IconName; title: string; text: string }[],
+};
 
 export const values: { icon: IconName; title: string; text: string }[] = [
   {

@@ -20,26 +20,8 @@ import { withBase } from '@/utils/url';
 >
   <Header />
   <main id="main">
-    <section
-      class="relative isolate flex min-h-[75svh] flex-col justify-end overflow-hidden bg-forest-950 text-sage-50"
-      aria-labelledby="ubc-title"
-    >
-      <Image
-        src={ubc.cover.src}
-        alt={ubc.cover.alt}
-        widths={[640, 960, 1280, 1600, 2400]}
-        sizes="100vw"
-        quality={80}
-        loading="eager"
-        fetchpriority="high"
-        class="absolute inset-0 -z-20 size-full object-cover object-[center_65%]"
-      />
-      <div
-        class="absolute inset-0 -z-10 bg-gradient-to-b from-forest-950/70 via-forest-950/45 to-forest-950/95"
-        aria-hidden="true"
-      ></div>
-
-      <div class="container-page pt-36 pb-16 sm:pb-20">
+    <section class="bg-forest-950 text-sage-50" aria-labelledby="ubc-title">
+      <div class="container-page pt-36 pb-12 sm:pb-16">
         <a
           href={withBase('/campaigns/')}
           class="mb-8 inline-flex items-center gap-2 text-sm text-sage-200 transition-colors hover:text-white"
@@ -61,6 +43,24 @@ import { withBase } from '@/utils/url';
         <p class="mt-6 max-w-2xl text-lg leading-relaxed text-pretty text-sage-100/90" data-reveal>
           {ubc.summary}
         </p>
+      </div>
+
+      <!-- The photo straddles the dark hero and the paper section below, so no text covers it. -->
+      <div class="bg-gradient-to-b from-forest-950 from-50% to-paper to-50%">
+        <div class="container-page">
+          <div class="aspect-[4/3] overflow-hidden rounded-3xl bg-forest-900 shadow-2xl shadow-forest-950/30 sm:aspect-[16/9] lg:aspect-[2/1]">
+            <Image
+              src={ubc.hero.src}
+              alt={ubc.hero.alt}
+              widths={[640, 960, 1280, 1600, 2400]}
+              sizes="(min-width: 1280px) 1200px, 100vw"
+              quality={80}
+              loading="eager"
+              fetchpriority="high"
+              class="size-full object-cover object-[center_86%]"
+            />
+          </div>
+        </div>
       </div>
     </section>
 
@@ -93,6 +93,73 @@ import { withBase } from '@/utils/url';
             </div>
           ))}
         </dl>
+      </div>
+    </section>
+
+    <section class="bg-sage-100 py-24 sm:py-32" aria-labelledby="survey-title">
+      <div class="container-page">
+        <SectionHeading
+          id="survey-title"
+          eyebrow="Student survey"
+          title={`${ubc.survey.responses} students made the case`}
+          lead={ubc.survey.method}
+        />
+        <ol class="grid gap-6 lg:grid-cols-2">
+          {ubc.survey.questions.map((q, i) => (
+            <li
+              class="flex flex-col rounded-3xl border border-sage-300 bg-white p-8 sm:p-10"
+              data-reveal
+            >
+              <p class="eyebrow mb-4 text-clay-600">Question {i + 1}</p>
+              <h3 class="text-2xl leading-snug font-medium text-balance text-forest-800">
+                {q.question}
+              </h3>
+              <p class="mt-8 flex items-baseline gap-3">
+                <span class="font-display text-6xl font-medium tracking-tight text-forest-700">
+                  {q.yes}%
+                </span>
+                <span class="text-lg text-ink-muted">said yes</span>
+              </p>
+              {q.breakdown && (
+                <div class="mt-8">
+                  <div
+                    class="flex h-10 gap-0.5 overflow-hidden rounded-lg bg-sage-200"
+                    aria-hidden="true"
+                  >
+                    {q.breakdown.map((b, j) => (
+                      <span
+                        class:list={[
+                          'grid place-items-center text-sm font-semibold text-white',
+                          j === 0 ? 'bg-clay-600' : 'bg-forest-400',
+                        ]}
+                        style={`width: ${b.share}%`}
+                      >
+                        {b.share}%
+                      </span>
+                    ))}
+                  </div>
+                  <ul class="mt-5 space-y-3 text-sm leading-snug text-ink-muted">
+                    {q.breakdown.map((b, j) => (
+                      <li class="flex items-start gap-3">
+                        <span
+                          class:list={[
+                            'mt-0.5 size-3.5 shrink-0 rounded-sm',
+                            j === 0 ? 'bg-clay-600' : 'bg-forest-400',
+                          ]}
+                          aria-hidden="true"
+                        />
+                        <span>
+                          <strong class="font-semibold text-forest-800">{b.share}%</strong>{' '}
+                          {b.answer}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
 

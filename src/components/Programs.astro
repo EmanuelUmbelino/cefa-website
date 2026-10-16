@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
 import SectionHeading from './SectionHeading.astro';
 import { programs } from '@/data/site';
@@ -11,34 +12,33 @@ import { withBase } from '@/utils/url';
       id="what-we-do-title"
       eyebrow="What we do"
       title="From one campus to every campus"
-      lead="CEFA works through a growing network of students who bring climate education to their universities, with training, campaigns and spaces to gather."
+      lead="CEFA works through a growing network of students who bring climate education to their universities, with ambassador training and campus campaigns."
     />
 
-    <ol class="grid gap-6 md:grid-cols-3">
-      {programs.map((p, i) => (
+    <ul class="grid gap-6 md:grid-cols-2">
+      {programs.map((p) => (
         <li
-          class="group relative flex flex-col rounded-3xl border border-sage-300 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:border-forest-300 hover:shadow-xl hover:shadow-forest-900/5"
+          class="group relative isolate flex aspect-[4/3] flex-col justify-end overflow-hidden rounded-3xl bg-forest-900 p-8 sm:p-10"
           data-reveal
         >
-          <div class="mb-8 flex items-center justify-between">
-            <span class="grid size-12 place-items-center rounded-2xl bg-forest-700 text-sage-200 transition-colors group-hover:bg-clay-600 group-hover:text-white">
-              <Icon name={p.icon} size={24} />
-            </span>
-            <span class="font-display text-4xl text-sage-400" aria-hidden="true">
-              0{i + 1}
-            </span>
-          </div>
-          <h3 class="mb-3 text-2xl font-medium text-forest-800">{p.title}</h3>
-          <p class="leading-relaxed text-pretty text-ink-muted">{p.text}</p>
+          <Image
+            src={p.image.src}
+            alt={p.image.alt}
+            widths={[640, 960, 1280]}
+            sizes="(min-width: 768px) 50vw, 100vw"
+            class="absolute inset-0 -z-20 size-full object-cover object-[center_30%] transition-transform duration-700 group-hover:scale-[1.04]"
+          />
+          <div
+            class="absolute inset-0 -z-10 bg-gradient-to-t from-forest-950/90 via-forest-950/40 to-forest-950/10"
+            aria-hidden="true"
+          ></div>
+          <h3 class="mb-6 text-3xl font-medium text-white sm:text-4xl">{p.title}</h3>
+          <a href={withBase(p.href)} class="btn-light self-start">
+            {p.cta}
+            <Icon name="arrow-right" size={18} />
+          </a>
         </li>
       ))}
-    </ol>
-
-    <div class="mt-12 flex justify-center" data-reveal>
-      <a href={withBase('/campaigns/')} class="btn-forest">
-        Explore our campaigns
-        <Icon name="arrow-right" size={18} />
-      </a>
-    </div>
+    </ul>
   </div>
 </section>

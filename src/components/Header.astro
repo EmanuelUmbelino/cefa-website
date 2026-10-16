@@ -6,7 +6,7 @@ import { withBase } from '@/utils/url';
 import logoMark from '@/assets/logo-mark.png';
 
 /** Page links (not homepage sections) stay highlighted on their own pages. */
-const isCurrentPage = (l: (typeof nav)[number]) =>
+const isCurrentPage = (l: { href: string; section?: string }) =>
   !l.section && Astro.url.pathname.startsWith(withBase(l.href).replace(/\/$/, ''));
 
 /** Page links come after the homepage sections, set apart by a divider. */
@@ -41,7 +41,7 @@ const startsPages = (i: number) => !nav[i]?.section && !!nav[i - 1]?.section;
 
     <ul class="hidden items-center gap-1 lg:flex">
       {nav.map((l, i) => (
-        <li class="flex items-center gap-1">
+        <li class="group/nav relative flex items-center gap-1">
           {startsPages(i) && (
             <span class="px-1 text-sage-100/40 select-none" aria-hidden="true">
               |
@@ -51,10 +51,36 @@ const startsPages = (i: number) => !nav[i]?.section && !!nav[i - 1]?.section;
             href={withBase(l.href)}
             data-nav-link={l.section}
             aria-current={isCurrentPage(l) ? 'true' : undefined}
-            class="rounded-full px-3 py-2 text-sm text-sage-100/80 transition-colors hover:text-white aria-[current=true]:text-white aria-[current=true]:underline aria-[current=true]:decoration-clay-400 aria-[current=true]:decoration-2 aria-[current=true]:underline-offset-8"
+            class="inline-flex items-center gap-1 rounded-full px-3 py-2 text-sm text-sage-100/80 transition-colors group-hover/nav:text-white hover:text-white aria-[current=true]:text-white aria-[current=true]:underline aria-[current=true]:decoration-clay-400 aria-[current=true]:decoration-2 aria-[current=true]:underline-offset-8"
           >
             {l.label}
+            {l.children && (
+              <Icon
+                name="chevron-down"
+                size={14}
+                class="transition-transform group-focus-within/nav:rotate-180 group-hover/nav:rotate-180"
+              />
+            )}
           </a>
+          {l.children && (
+            <ul class="invisible absolute top-full right-0 min-w-44 translate-y-1 pt-2 opacity-0 transition-all duration-200 group-focus-within/nav:visible group-focus-within/nav:translate-y-0 group-focus-within/nav:opacity-100 group-hover/nav:visible group-hover/nav:translate-y-0 group-hover/nav:opacity-100">
+              <li class="rounded-2xl border border-white/10 bg-forest-900/95 p-1.5 shadow-xl shadow-black/20 backdrop-blur-md">
+                <ul>
+                  {l.children.map((c) => (
+                    <li>
+                      <a
+                        href={withBase(c.href)}
+                        aria-current={isCurrentPage(c) ? 'true' : undefined}
+                        class="block rounded-xl px-4 py-2.5 text-sm text-sage-100/85 transition-colors hover:bg-white/10 hover:text-white aria-[current=true]:text-white"
+                      >
+                        {c.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            </ul>
+          )}
         </li>
       ))}
     </ul>
@@ -94,6 +120,20 @@ const startsPages = (i: number) => !nav[i]?.section && !!nav[i - 1]?.section;
           >
             {l.label}
           </a>
+          {l.children && (
+            <ul class="ml-3 border-l border-white/10 pl-3">
+              {l.children.map((c) => (
+                <li>
+                  <a
+                    href={withBase(c.href)}
+                    class="block rounded-xl px-3 py-2.5 text-sm text-sage-100/75 transition-colors hover:bg-white/5 hover:text-white"
+                  >
+                    {c.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
         </li>
       ))}
       <li class="px-3 pt-2 pb-1 sm:hidden">
