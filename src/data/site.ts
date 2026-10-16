@@ -100,12 +100,15 @@ export const mission = {
 export const programs: {
   title: string;
   cta: string;
+  ctaContext?: string;
   href: string;
   image: { src: ImageMetadata; alt: string };
 }[] = [
   {
     title: 'Ambassadors Program',
     cta: 'Learn More',
+    /** Read by screen readers and search engines, so the link says where it goes. */
+    ctaContext: 'about the Ambassadors Program',
     href: '/ambassadors-program/',
     image: {
       src: acadiaSurvey,
