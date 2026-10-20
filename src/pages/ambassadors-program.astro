@@ -104,6 +104,43 @@ import forest from '@/assets/hero-forest.jpg';
       </div>
     </section>
 
+    <section class="bg-paper py-24 sm:py-32" aria-labelledby="trainings-title">
+      <div class="container-page">
+        <SectionHeading
+          id="trainings-title"
+          eyebrow="Trainings"
+          title="Inside the Cohort 1 trainings"
+          lead="Our first cohort met online over four training sessions, from first ideas to lobbying decision-makers."
+        />
+        <ul class="grid gap-8 sm:grid-cols-2">
+          {ambassadorsProgram.trainings.map((t) => (
+            <li data-reveal>
+              <figure>
+                <div class="aspect-video overflow-hidden rounded-2xl bg-forest-950">
+                  <Image
+                    src={t.photo.src}
+                    alt={t.photo.alt}
+                    widths={[480, 720, 960, 1280]}
+                    sizes="(min-width: 640px) 50vw, 100vw"
+                    class="size-full object-contain"
+                  />
+                </div>
+                <figcaption class="mt-4">
+                  <p class="eyebrow text-clay-600">
+                    {t.label}
+                    {t.date && ` · ${t.date}`}
+                  </p>
+                  {t.topic && (
+                    <p class="mt-1 font-display text-xl leading-snug text-forest-800">{t.topic}</p>
+                  )}
+                </figcaption>
+              </figure>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
     <section class="bg-forest-900 py-20 text-sage-50 sm:py-24" aria-labelledby="become-title">
       <div
         class="container-page flex flex-col items-start justify-between gap-8 md:flex-row md:items-center"

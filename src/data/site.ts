@@ -7,6 +7,10 @@ import annabellePhoto from '@/assets/team/annabelle-lee-portrait.webp';
 import arkapriyaPhoto from '@/assets/team/arkapriya-majumder-portrait.webp';
 import acadiaSurvey from '@/assets/campaigns/acadia/survey-table.jpg';
 import ubcSurvey from '@/assets/campaigns/ubc/survey-2025.jpg';
+import training1 from '@/assets/ambassadors/training-1.jpg';
+import training2 from '@/assets/ambassadors/training-2.jpg';
+import training3 from '@/assets/ambassadors/training-3.jpg';
+import training4 from '@/assets/ambassadors/training-4.jpg';
 
 /**
  * All site copy lives here. Components only handle layout.
@@ -126,7 +130,7 @@ export const programs: {
   },
 ];
 
-/** The Ambassadors Program page. Cohort profiles and training photos are still to come. */
+/** The Ambassadors Program page. Cohort profiles are still to come. */
 export const ambassadorsProgram = {
   metaDescription:
     'CEFA trains university students to lead climate education campaigns on their own campuses, with ongoing mentorship and a peer learning community.',
@@ -154,6 +158,50 @@ export const ambassadorsProgram = {
       text: 'We study what each campaign learns and turn it into lessons and best practices for the next cohort.',
     },
   ] satisfies { icon: IconName; title: string; text: string }[],
+  /**
+   * Cohort 1 training calls on Zoom (Drive folder "Cohort #1 Ambassadors Program").
+   * Topics come from the title slides. Trainings 3 and 4 have no date in Drive yet.
+   */
+  trainings: [
+    {
+      label: 'Training 1',
+      date: 'August 2025',
+      topic: 'Exploring ideas for leading a CEFA campaign',
+      photo: {
+        src: training1,
+        alt: 'Zoom call with a “Welcome to CEFA!” slide next to a gallery of smiling ambassadors and CEFA organizers',
+      },
+    },
+    {
+      label: 'Training 2',
+      date: 'September 2025',
+      topic: 'Strategizing for leading a CEFA campaign',
+      photo: {
+        src: training2,
+        alt: 'A “Session #2” title slide in CEFA colors, with a row of ambassadors on camera above it',
+      },
+    },
+    {
+      label: 'Training 3',
+      photo: {
+        src: training3,
+        alt: 'Ambassadors smiling on camera next to the Climate Education For All logo slide',
+      },
+    },
+    {
+      label: 'Final training',
+      topic: 'Lobbying and motivational interviewing',
+      photo: {
+        src: training4,
+        alt: 'Final training title slide with the CEFA logo, with a row of ambassadors on camera above it',
+      },
+    },
+  ] satisfies {
+    label: string;
+    date?: string;
+    topic?: string;
+    photo: { src: ImageMetadata; alt: string };
+  }[],
 };
 
 export const values: { icon: IconName; title: string; text: string }[] = [

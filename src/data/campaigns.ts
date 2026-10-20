@@ -212,6 +212,7 @@ export const theoryOfChange = [
 
 /** Universities where ambassadors from CEFA's first cohort are building campaigns. */
 export const network = [
+  { university: 'University of British Columbia', place: 'Vancouver, BC' },
   { university: 'Acadia University', place: 'Wolfville, NS' },
   { university: 'Mount Allison University', place: 'Sackville, NB' },
   { university: 'University of Calgary', place: 'Calgary, AB' },
